@@ -8,6 +8,8 @@ const vscode = require('vscode');
 /**
  * @param {vscode.ExtensionContext} context
  */
+
+
 function activate(context) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
@@ -23,9 +25,30 @@ function activate(context) {
 		// Display a message box to the user
 		vscode.window.showInformationMessage('Break Timer extension is active ');
 	});
-	//
+	//make an input, act upon the value after input
+	setTimer();
+
 
 	context.subscriptions.push(disposable);
+}
+
+function setTimer() {
+	let input = vscode.window.showInputBox({title: 'How many minutes you want to spend time to code in a single session?'});
+	input.then(
+		function(result) {
+			let minutes = parseInt(result);
+			//convert to milisec
+			let milisec = toMilisec(minutes);
+			//set timeout for a notif
+		},
+		function(err) {
+			console.log('error: ' + err);
+		}
+	)
+}
+//convert to miliseconds
+function toMilisec(minutes) {
+	return minutes * 60 * 1000;
 }
 
 // this method is called when your extension is deactivated

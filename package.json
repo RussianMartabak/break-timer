@@ -10,7 +10,9 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:break-timer.helloWorld"
+        "onCommand:break-timer.helloWorld",
+		"onStartupFinished"
+		
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -18,7 +20,12 @@
             "command": "break-timer.helloWorld",
             "title": "Hello World"
 
-		}]
+		},
+		{
+			"command": "break-timer.set",
+			"title" : "Set Timer"
+		}
+	]
 	},
 	"scripts": {
 		"lint": "eslint .",
