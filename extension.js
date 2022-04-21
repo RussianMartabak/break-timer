@@ -25,6 +25,9 @@ function activate(context) {
 		// Display a message box to the user
 		vscode.window.showInformationMessage('Break Timer extension is active ');
 	});
+	vscode.commands.registerCommand('break-timer.set', function () {
+		setTimer();
+	})
 	//make an input, act upon the value after input
 	setTimer();
 
@@ -40,12 +43,17 @@ function setTimer() {
 			//convert to milisec
 			let milisec = toMilisec(minutes);
 			//set timeout for a notif
+			setTimeout(remind, milisec);
 		},
 		function(err) {
 			console.log('error: ' + err);
 		}
 	)
 }
+function remind(){
+	vscode.window.showWarningMessage('Hands Up! stop coding!');
+}
+
 //convert to miliseconds
 function toMilisec(minutes) {
 	return minutes * 60 * 1000;
