@@ -10,7 +10,7 @@ After a set amount of time based on your input, the extension will give you a re
 
 ## How to Install  
   
-
+Download the extension form the release page and install it manually
 
 
 **Enjoy!**
